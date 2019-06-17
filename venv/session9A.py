@@ -1,84 +1,103 @@
-"""
 
+#====================================================================
+class College:
 
- relationship mapping
+    # Constructor for Standardization
+    # def __init__(self, name, phone, email, address):
+    #     self.name = name
+    #     self.phone = phone
+    #     self.email = email
+    #     self.address = address # HAS-A | 1 to 1
 
- HAS-A MAPPING
- 1 engineer who is working on 1 project
- 1 engineer who is working on many project
- many engineer who is working on many project
-
-  1 college has 1 course
-  1 college has many courses
-  many colleges have many courses
-  college
-        name
-        phone
-        email
-   course
-     type
-     name
-     time
-"""
-
-class college:
-    #create a constructor for standardiszation
-    def __init__(self, name, phone, email, course):
+    def __init__(self, name, phone, email, Courses):
         self.name = name
         self.phone = phone
         self.email = email
-        self.course = course
-#function : update operation
+        self.Courses = Courses # HAS-A | 1 to many
+
+    # Function : Update Operation
     def updateCollegeDetails(self, name, phone, email):
         self.name = name
         self.phone = phone
         self.email = email
 
-    #function : read operation
+    # Function : Read Operation
     def showCollegeDetails(self):
-        print("=========")
-        print("name:\t",self.name)
-        print("phone:\t", self.name)
-        print("email:\t", self.name)
-        print("=========")
+        print("=================")
+        print("Name:\t",self.name)
+        print("Phone:\t", self.phone)
+        print("Email:\t", self.email)
+        print("=================")
 
-     # def __del__(self):
-    #        print("this is optional as per requirement)
+        print(">> course List for {}:".format(self.name))
+
+        # self.course.showCourseDetails() # 1 to 1
+        for courses in self.Courses:         # 1 to *
+            course.showCourseDetails()
+
+        print(">>>>>>>>>>>>>>>>>>>>")
+
+    # Business Function : Will have logical processing (Controller)
+    def getTotalCourses(self):
+        return len(self.Courses)
 
 
+    # def __del__(self):
+    #     print("This is optional as per requirement")
 
+class Course:
 
-
-
-
-
-class course:
-    # create a constructor for standardiszation
+    # Constructor for Standardization
     def __init__(self, type, name, time):
         self.type = type
         self.name = name
         self.time = time
 
-    # function : update operation
+    # Function : Update Operation
     def updateCourseDetails(self, type, name, time):
         self.type = type
         self.name = name
         self.time = time
 
-    # function : read operation
+    # Function : Read Operation
     def showCourseDetails(self):
-        print("=========")
-        print("type:\t", self.type)
+        print("=================")
+        print("type:\t",self.type)
         print("name:\t", self.name)
         print("time:\t", self.time)
-        print("=========")
-a1 = course("degree", "btech", "four years")
-a2 = course("diploma", "cse", "three years")
-#cRef = a1
-#cRef.showCourseDetails()
-#cRef = a2
-#cRef.showCourseDetails()
-a1.showCourseDetails()
-a2.showCourseDetails()
+        print("=================")
+
+
+courseList = []
+choice = "yes"
+while choice == "yes":
+    courseList = course(None, None, None)
+    course.type = input("Enter typee: ")
+    course.name = input("Enter name: ")
+    course.time = input("Enter time: ")
+    courseList.append(course)
+
+    choice = input("Would you like to add another course (yes/no): ")
+
+"""
+a1 = Address(None, None, None)
+a1.adrsLine = input("Enter Address Line: ")
+a1.city = input("Enter City: ")
+a1.state = input("Enter State: ")
+a2 = Address("Country Homes", "Ludhiana", "Punjab")
+# List of Addresses
+adrsList = [a1, a2]
+"""
+# c1 = Customer("John", "+91 99999 88888", "john@example.com", a1)
+c1 = College("John", "+91 99999 88888", "john@example.com", courseList)
+
+# c1.showCustomerDetails()
+
+cRef = c1
+cRef.showCollegeDetails()
+
+# a1.showAddressDetails()
+# a2.showAddressDetails()
+
 
 
