@@ -1,7 +1,23 @@
-file = open("session11.py","r")
+# file = open("Session11.py","r")
+file = open("/Users/Shehbaj Bajwa/Downloads/session10A.py","r")
 print(type(file))
 
-filecontents = file.read()
-print(type(filecontents))
+fileContents = file.read()
+print(type(fileContents))
 print()
-print(filecontents)
+
+print(fileContents)
+print(len(fileContents))
+
+print(">> Re-Read File")
+
+# Re-Read the File
+fileContents = file.read() # Re-Read
+print(fileContents)
+
+# Once a File is Opened and Read, we cannot re-read it !!
+# You need to re-open and re-read
+
+# HW: Read a Python File and Create a Dictionary which will
+# tell us how many classes and Objects exist
+# Keys will be Class Name and Values will be Object Count
